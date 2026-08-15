@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-navy: #06182A;
+  --color-navy-soft: #0B2238;
+  --color-gold: #F5B82E;
+  --font-sans: 'Inter', 'Inter Fallback';
+  --font-heading: 'Manrope', 'Manrope Fallback';
+}
+
+:root {
+  color-scheme: light;
+  --background: #FFFFFF;
+  --foreground: #06182A;
+  --card: #FFFFFF;
+  --card-foreground: #06182A;
+  --border: #dce4ea;
+  --input: #e7edf1;
+  --muted-foreground: #667582;
+  --radius: 0.75rem;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #FFFFFF; }
+body { margin: 0; background: #FFFFFF; color: #06182A; font-family: var(--font-sans), Arial, sans-serif; }
+button, a, input, select { font: inherit; }
+a { text-decoration: none; }
+.font-heading { font-family: var(--font-heading), Arial, sans-serif; }
+.nav-link { position: relative; padding-block: 27px; transition: color .2s ease; }
+.nav-link:hover, .nav-link.active { color: #F5B82E; }
+.nav-link.active::after { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #F5B82E; content: ''; }
+.eyebrow { color: #F5B82E; font-size: .73rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; }
+.gold-button, .outline-button { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; border-radius: .5rem; padding: .85rem 1.35rem; font-size: .85rem; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease; }
+.gold-button { background: #F5B82E; color: #06182A; box-shadow: 0 10px 25px rgba(245,184,46,.16); }
+.outline-button { border: 1px solid rgba(255,255,255,.55); color: #FFFFFF; }
+.gold-button:hover, .outline-button:hover { transform: translateY(-2px); }
+.section-shell { padding-block: 6rem; background: #FFFFFF; }
+.section-heading { margin: 0 auto 2.5rem; max-width: 48rem; padding-inline: 1.25rem; text-align: center; }
+.section-heading h2 { margin-top: .65rem; font-family: var(--font-heading), Arial, sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -.04em; color: #06182A; }
+.section-heading p:last-child { margin-top: .8rem; color: #667582; }
+.product-card { overflow: hidden; border: 1px solid #dce4ea; border-radius: .8rem; background: #FFFFFF; box-shadow: 0 8px 24px rgba(6,24,42,.06); transition: transform .25s ease, box-shadow .25s ease; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 18px 36px rgba(6,24,42,.12); }
+.product-card img { height: 175px; width: 100%; object-fit: cover; filter: saturate(.75); }
+.product-card h3 { font-family: var(--font-heading), Arial, sans-serif; font-size: 1rem; font-weight: 850; color: #06182A; }
+.product-card p { margin-top: .55rem; font-size: .8rem; line-height: 1.55; color: #667582; }
+.input-field { min-height: 40px; width: 100%; border: 1px solid #dce4ea; border-radius: .45rem; background: #FFFFFF; padding: .6rem .7rem; color: #06182A; outline: none; }
+.input-field:focus { border-color: #F5B82E; box-shadow: 0 0 0 3px rgba(245,184,46,.15); }
+@media (max-width: 640px) { .section-shell { padding-block: 4.5rem; } }
+
+/* Premium construction brand polish */
+::selection { background: #F5B82E; color: #06182A; }
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid rgba(245,184,46,.55);
+  outline-offset: 3px;
+}
+
+header { box-shadow: 0 8px 26px rgba(6,24,42,.12); }
+.nav-link { letter-spacing: .04em; }
+.nav-link::before { position: absolute; inset: auto 0 0; height: 2px; background: #F5B82E; content: ''; transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
+.nav-link:hover::before, .nav-link.active::before { transform: scaleX(1); transform-origin: left; }
+.nav-link.active::after { display: none; }
+
+.gold-button, .outline-button { min-height: 46px; letter-spacing: .02em; }
+.gold-button { position: relative; overflow: hidden; }
+.gold-button::after { position: absolute; inset: 0; background: rgba(255,255,255,.24); content: ''; transform: translateX(-110%) skewX(-18deg); transition: transform .45s ease; }
+.gold-button:hover::after { transform: translateX(110%) skewX(-18deg); }
+.gold-button > *, .outline-button > * { position: relative; z-index: 1; }
+.gold-button:hover, .outline-button:hover { box-shadow: 0 14px 30px rgba(6,24,42,.14); }
+
+.section-shell { position: relative; }
+.section-shell::before { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(245,184,46,.025), transparent 22%); content: ''; }
+.section-heading h2 { text-wrap: balance; }
+
+.product-card { border-radius: 1rem; box-shadow: 0 10px 28px rgba(6,24,42,.07), 0 2px 4px rgba(6,24,42,.04); }
+.product-card img { transition: transform .55s ease, filter .35s ease; }
+.product-card:hover img { transform: scale(1.055); filter: saturate(.95); }
+.product-card > div { position: relative; background: #FFFFFF; }
+.product-card > div::before { position: absolute; left: 1.25rem; top: 0; width: 42px; height: 3px; background: #F5B82E; content: ''; transform: translateY(-1px); }
+
+.input-field { min-height: 44px; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.input-field:hover { border-color: rgba(6,24,42,.35); }
+.input-field:focus { transform: translateY(-1px); }
+
+section[id] { scroll-margin-top: 86px; }
+
+@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.hero-content { animation: rise-in .75s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+@media (max-width: 640px) {
+  .nav-link { padding-block: .15rem; }
+  .product-card img { height: 155px; }
+}

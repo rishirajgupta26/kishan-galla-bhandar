@@ -1,0 +1,58 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"] // Yeh Neon adapter ke liye zaroori hai
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Security - Owner Login ke liye
+model Admin {
+  id       String @id @default(cuid())
+  username String @unique
+  password String
+}
+
+// Inventory - Godown ka saara stock
+model Material {
+  id          String   @id @default(cuid())
+  name        String   @unique             // e.g., "Cement", "Iron Rod / TMT"
+  unit        String                       // e.g., "Bags", "Ton", "Pcs"
+  stock       Float    @default(0)         // Current closing stock
+  status      String   @default("In Stock")// "In Stock", "Limited", "Out of Stock"
+  currentRate Float    @default(0)         // Rate for Price Estimate Calculator
+  updatedAt   DateTime @updatedAt
+
+  ledgers     Ledger[]
+}
+
+// Transactions - Maal Aaya / Bika ka hisaab
+model Ledger {
+  id          String          @id @default(cuid())
+  type        TransactionType              // "AAYA" (Purchase) or "BIKA" (Sale)
+  quantity    Float                        // Kitna maal aaya ya gaya
+  description String?                      // e.g., "500 Bags received"
+  createdAt   DateTime        @default(now()) // Date and time of entry
+
+  materialId  String
+  material    Material        @relation(fields: [materialId], references: [id])
+}
+
+enum TransactionType {
+  AAYA  // Purchase / Received
+  BIKA  // Sale / Sold
+}
+
+// Billing - Customer ke bills save rakhne ke liye
+model Invoice {
+  id            String   @id @default(cuid())
+  invoiceNo     String   @unique
+  invoiceDate   String
+  customerName  String
+  customerPhone String?
+  totalAmount   Float
+  cartData      Json     // Isme bill ke saare items (Cement, etc.) save honge
+  createdAt     DateTime @default(now())
+}
