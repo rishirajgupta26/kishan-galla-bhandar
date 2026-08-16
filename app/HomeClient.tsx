@@ -78,7 +78,7 @@ export default function HomeClient({ dbMaterials }: { dbMaterials: Material[] })
   const removeMaterial = (id: number) => setMaterials((current) => current.filter((item) => item.id !== id))
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground">
       {/* 🌟 HEADER 🌟 */}
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy/95 backdrop-blur-md">
         <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 lg:px-8">
@@ -115,10 +115,10 @@ export default function HomeClient({ dbMaterials }: { dbMaterials: Material[] })
         )}
       </header>
 
-      {/* 🌟 HERO SECTION (Brand Name in Focus & Bright Image) 🌟 */}
+      {/* 🌟 HERO SECTION 🌟 */}
       <section id="home" className="relative flex min-h-[720px] w-full items-center overflow-hidden bg-navy pt-[76px]">
         
-        {/* BACKGROUND IMAGE & FADE EFFECT (RIGHT SIDE) */}
+        {/* BACKGROUND IMAGE */}
         <div className="absolute inset-0 z-0 flex justify-end">
           <div className="relative w-full lg:w-[65%] h-full">
             <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/30 to-transparent z-10 hidden lg:block" />
@@ -135,28 +135,23 @@ export default function HomeClient({ dbMaterials }: { dbMaterials: Material[] })
         {/* FOREGROUND CONTENT */}
         <div className="relative z-20 mx-auto grid w-full max-w-7xl items-center gap-8 px-5 py-20 lg:grid-cols-[1.2fr_1fr] lg:px-8">
           
-          {/* LEFT SIDE: BRAND NAME (Hindi & English) */}
           <div className="max-w-2xl text-white">
-            
-            {/* Chota Tag */}
             <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-navy/50 backdrop-blur-sm px-4 py-2 shadow-sm">
               <span className="h-2 w-2 rounded-full bg-gold"></span>
               <p className="text-xs font-bold tracking-[0.2em] text-gold uppercase">Welcome | आपका स्वागत है</p>
             </div>
             
-            {/* FIX: Hindi Store Name with Corrected Spelling */}
-            <h1 className="font-heading text-[3.5rem] font-black leading-[1.05] tracking-tight sm:text-[5.5rem] drop-shadow-md">
+            {/* FIXED TEXT OVERFLOW: Reduced base size, keeping large for md screens */}
+            <h1 className="font-heading text-4xl md:text-[5.5rem] font-black leading-[1.05] tracking-tight drop-shadow-md">
               किसान गल्ला भंडार<br />
-              <span className="text-gold text-5xl sm:text-6xl mt-2 block">& किसान सेवा केंद्र</span>
+              <span className="text-gold text-3xl sm:text-6xl mt-2 block">& किसान सेवा केंद्र</span>
             </h1>
             
-            {/* English Store Name */}
             <p className="mt-6 font-sans text-xl sm:text-2xl font-extrabold tracking-[0.15em] text-white/90 uppercase drop-shadow-sm border-l-4 border-gold pl-4">
               Kishan Galla Bhandar<br className="hidden sm:block"/>
               <span className="text-base sm:text-lg text-gold/80 tracking-[0.2em]"> & Kishan Seva Kendra</span>
             </p>
             
-            {/* Slogan & Description */}
             <p className="mt-8 max-w-xl text-lg leading-8 text-white/90 font-medium">
               सीमेंट, सरिया, गिट्टी, बालू, ईंट और पत्थर के लिए आपका भरोसेमंद होलसेल पार्टनर। बेहतरीन क्वालिटी, मजबूत निर्माण।
               <span className="mt-3 block text-sm text-white/60 leading-6 font-normal tracking-wide">
@@ -164,7 +159,6 @@ export default function HomeClient({ dbMaterials }: { dbMaterials: Material[] })
               </span>
             </p>
 
-            {/* Buttons */}
             <div className="mt-9 flex flex-wrap gap-4">
               <a href="#products" className="gold-button !flex-col !items-start gap-1 py-3 px-6 shadow-xl hover:scale-105 transition-transform cursor-pointer">
                 <span className="flex items-center gap-2">Explore products <ArrowRight size={17} /></span>
@@ -176,24 +170,13 @@ export default function HomeClient({ dbMaterials }: { dbMaterials: Material[] })
               </a>
             </div>
 
-            {/* Badges */}
             <div className="mt-12 flex flex-wrap items-center gap-y-3 gap-x-6 text-sm font-medium text-white/80">
-              <span className="flex items-center gap-2">
-                <Check className="text-gold stroke-[3]" size={18} />
-                <span>Genuine Quality</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="text-gold stroke-[3]" size={18} />
-                <span>On-time Delivery</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <Check className="text-gold stroke-[3]" size={18} />
-                <span>Fair Pricing</span>
-              </span>
+              <span className="flex items-center gap-2"><Check className="text-gold stroke-[3]" size={18} /><span>Genuine Quality</span></span>
+              <span className="flex items-center gap-2"><Check className="text-gold stroke-[3]" size={18} /><span>On-time Delivery</span></span>
+              <span className="flex items-center gap-2"><Check className="text-gold stroke-[3]" size={18} /><span>Fair Pricing</span></span>
             </div>
           </div>
           
-          {/* RIGHT SIDE: Floating Proprietor Card */}
           <div className="relative mx-auto w-full max-w-[380px] self-end lg:mt-auto mt-10">
             <div className="rounded-2xl border border-gold/40 bg-navy/90 backdrop-blur-lg p-6 shadow-2xl transition-transform hover:scale-[1.02]">
               <div className="flex items-center gap-4">

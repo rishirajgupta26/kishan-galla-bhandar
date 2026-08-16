@@ -7,11 +7,10 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
 
 // 🌟 SEO Optimized Metadata for Kishan Galla Bhandar & Seva Kendra 🌟
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Kishan Galla Bhandar & Kishan Seva Kendra | Nawada',
   description: 'Wholesale and retail partner for cement, iron rod, seeds, and fertilizers in Nawada, Bihar. Proprietor: Bijendra Prasad.',
   keywords: ['Kishan Galla Bhandar', 'Kishan Seva Kendra', 'Nawada', 'Bihar', 'Cement Dealer', 'Iron Rods', 'Fertilizer Shop', 'Seeds', 'Wholesale'],
-}
   generator: 'v0.app',
 }
 
